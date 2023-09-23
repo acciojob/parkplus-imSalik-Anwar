@@ -31,7 +31,7 @@ public class ReservationServiceImpl implements ReservationService {
         Optional<User> userOptional = userRepository3.findById(userId);
         Optional<ParkingLot> parkingLotOptional = parkingLotRepository3.findById(parkingLotId);
         if(!userOptional.isPresent() || !parkingLotOptional.isPresent()){
-            throw new CanNotMakeReservationException("User or Parking Lot not found.");
+            throw new CanNotMakeReservationException();
         }
         List<Spot> spots = parkingLotOptional.get().getSpotList();
         List<Spot> spotsWithGivenType = new ArrayList<>();
@@ -53,7 +53,7 @@ public class ReservationServiceImpl implements ReservationService {
             }
         }
         if (perfectSpot == null) {
-            throw new CanNotMakeReservationException("Parking Lot found but there were no suitable spots available.");
+            throw new CanNotMakeReservationException();
         }
         perfectSpot.setOccupied(true);
         Spot savedSpot = spotRepository3.save(perfectSpot);
