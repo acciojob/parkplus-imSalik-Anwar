@@ -39,7 +39,7 @@ public class ReservationServiceImpl implements ReservationService {
             if(numberOfWheels == 2 && (spot.getSpotType() == SpotType.TWO_WHEELER || spot.getSpotType() == SpotType.FOUR_WHEELER)
             || spot.getSpotType() == SpotType.OTHERS){
                 spotsWithGivenType.add(spot);
-            } else if(numberOfWheels == 4 && (spot.getSpotType() == SpotType.FOUR_WHEELER || spot.getSpotType() == SpotType.OTHERS)){
+            } else if((numberOfWheels == 4 || numberOfWheels == 3 ) && (spot.getSpotType() == SpotType.FOUR_WHEELER || spot.getSpotType() == SpotType.OTHERS)){
                 spotsWithGivenType.add(spot);
             } else {
                 spotsWithGivenType.add(spot);
