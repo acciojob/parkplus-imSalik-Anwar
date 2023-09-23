@@ -29,7 +29,6 @@ public class PaymentServiceImpl implements PaymentService {
         Reservation reservation = reservationOptional.get();
         int amountDue = reservation.getNumberOfHours() * reservation.getSpot().getPricePerHour();
         if(amountSent < amountDue){
-//            throw new InsufficientAmountException();
             return null;
         }
         String MODE = mode.toUpperCase();
@@ -37,7 +36,6 @@ public class PaymentServiceImpl implements PaymentService {
         String upi = PaymentMode.UPI.name();
         String card = PaymentMode.CARD.name();
         if(!MODE.equals(cash) && !MODE.equals(upi) && !MODE.equals(card)){
-//            throw new PaymentModeNotDetectedException();
             return null;
         }
         PaymentMode paymentMode = null;

@@ -20,10 +20,6 @@ public class PaymentController {
         //If the mode contains a string other than "cash", "card", or "upi" (any character in uppercase or lowercase),
         // throw "Payment mode not detected" exception.
         //Note that the reservationId always exists
-        try{
             return paymentService.pay(reservationId, amountSent, mode);
-        } catch (Exception e){
-            return null;
-        }
     }
 }
