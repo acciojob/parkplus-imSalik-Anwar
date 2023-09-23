@@ -40,6 +40,9 @@ public class ParkingLotServiceImpl implements ParkingLotService {
             spotType = SpotType.OTHERS;
         }
         Optional<ParkingLot> parkingLotOptional = parkingLotRepository1.findById(parkingLotId);
+        if(!parkingLotOptional.isPresent()){
+            return null;
+        }
         Spot spot = new Spot();
         spot.setOccupied(false);
         spot.setPricePerHour(pricePerHour);
@@ -56,8 +59,6 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
     @Override
     public void deleteSpot(int spotId) {
-//        Optional<Spot> spotOptional = spotRepository1.findById(spotId);
-//        spotOptional.get().getParkingLot().getSpotList().remove(spotOptional.get());
         spotRepository1.deleteById(spotId);
     }
 
