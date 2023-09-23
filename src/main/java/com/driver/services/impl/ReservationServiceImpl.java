@@ -31,15 +31,14 @@ public class ReservationServiceImpl implements ReservationService {
         Optional<User> userOptional = userRepository3.findById(userId);
         Optional<ParkingLot> parkingLotOptional = parkingLotRepository3.findById(parkingLotId);
         if(!userOptional.isPresent() || !parkingLotOptional.isPresent()){
-//            throw new CanNotMakeReservationException();
             return null;
         }
         List<Spot> spots = parkingLotOptional.get().getSpotList();
         List<Spot> spotsWithGivenType = new ArrayList<>();
         for(Spot spot : spots){
-            if(numberOfWheels == 2 && spot.getSpotType() == SpotType.TWO_WHEELER){
+            if(numberOfWheels == 2 && (spot.getSpotType() == SpotType.TWO_WHEELER || spot.getSpotType() == SpotType.FOUR_WHEELER)){
                 spotsWithGivenType.add(spot);
-            } else if(numberOfWheels == 4 && spot.getSpotType() == SpotType.FOUR_WHEELER){
+            } else if(numberOfWheels == 4 && (spot.getSpotType() == SpotType.FOUR_WHEELER || spot.getSpotType() == SpotType.OTHERS)){
                 spotsWithGivenType.add(spot);
             } else {
                 spotsWithGivenType.add(spot);
@@ -54,7 +53,6 @@ public class ReservationServiceImpl implements ReservationService {
             }
         }
         if (perfectSpot == null) {
-//            throw new CanNotMakeReservationException();
             return null;
         }
 
