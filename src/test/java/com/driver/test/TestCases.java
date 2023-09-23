@@ -25,7 +25,6 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-
 @RunWith(MockitoJUnitRunner.Silent.class)
 public class TestCases {
 }

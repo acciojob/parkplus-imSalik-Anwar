@@ -47,7 +47,7 @@ public class ReservationServiceImpl implements ReservationService {
         int minPrice = Integer.MAX_VALUE;
         Spot perfectSpot = null;
         for(Spot spot : spotsWithGivenType){
-            if(!spot.isOccupied() && spot.getPricePerHour() < minPrice){
+            if(!spot.getOccupied() && spot.getPricePerHour() < minPrice){
                 minPrice = spot.getPricePerHour();
                 perfectSpot = spot;
             }
