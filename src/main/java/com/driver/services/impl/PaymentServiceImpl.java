@@ -39,7 +39,8 @@ public class PaymentServiceImpl implements PaymentService {
         String upi = PaymentMode.UPI.name();
         String card = PaymentMode.CARD.name();
         if(!MODE.equals(cash) && !MODE.equals(upi) && !MODE.equals(card)){
-            throw new PaymentModeNotDetectedException();
+//            throw new PaymentModeNotDetectedException();
+            return null;
         }
         PaymentMode paymentMode = null;
         if(MODE.equals(cash)){
