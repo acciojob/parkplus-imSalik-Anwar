@@ -1,6 +1,5 @@
 package com.driver.services.impl;
 
-import com.driver.Exception.CanNotMakeReservationException;
 import com.driver.model.*;
 import com.driver.repository.*;
 import com.driver.services.ReservationService;
@@ -36,13 +35,16 @@ public class ReservationServiceImpl implements ReservationService {
         List<Spot> spots = parkingLotOptional.get().getSpotList();
         List<Spot> spotsWithGivenType = new ArrayList<>();
         for(Spot spot : spots){
-            if(numberOfWheels == 2 && (spot.getSpotType() == SpotType.TWO_WHEELER || spot.getSpotType() == SpotType.FOUR_WHEELER)
-            || spot.getSpotType() == SpotType.OTHERS){
+            if(numberOfWheels <= 2){
                 spotsWithGivenType.add(spot);
-            } else if((numberOfWheels == 4 || numberOfWheels == 3 ) && (spot.getSpotType() == SpotType.FOUR_WHEELER || spot.getSpotType() == SpotType.OTHERS)){
-                spotsWithGivenType.add(spot);
+            } else if((numberOfWheels == 4) || (numberOfWheels == 3)){
+                if (spot.getSpotType() == SpotType.FOUR_WHEELER || spot.getSpotType() == SpotType.OTHERS){
+                    spotsWithGivenType.add(spot);
+                }
             } else {
-                spotsWithGivenType.add(spot);
+                if(spot.getSpotType() == SpotType.OTHERS) {
+                    spotsWithGivenType.add(spot);
+                }
             }
         }
         int minPrice = Integer.MAX_VALUE;

@@ -1,7 +1,5 @@
 package com.driver.services.impl;
 
-import com.driver.Exception.InsufficientAmountException;
-import com.driver.Exception.PaymentModeNotDetectedException;
 import com.driver.model.Payment;
 import com.driver.model.PaymentMode;
 import com.driver.model.Reservation;
