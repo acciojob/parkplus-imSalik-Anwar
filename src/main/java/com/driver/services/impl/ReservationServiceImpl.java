@@ -36,7 +36,8 @@ public class ReservationServiceImpl implements ReservationService {
         List<Spot> spots = parkingLotOptional.get().getSpotList();
         List<Spot> spotsWithGivenType = new ArrayList<>();
         for(Spot spot : spots){
-            if(numberOfWheels == 2 && (spot.getSpotType() == SpotType.TWO_WHEELER || spot.getSpotType() == SpotType.FOUR_WHEELER)){
+            if(numberOfWheels == 2 && (spot.getSpotType() == SpotType.TWO_WHEELER || spot.getSpotType() == SpotType.FOUR_WHEELER)
+            || spot.getSpotType() == SpotType.OTHERS){
                 spotsWithGivenType.add(spot);
             } else if(numberOfWheels == 4 && (spot.getSpotType() == SpotType.FOUR_WHEELER || spot.getSpotType() == SpotType.OTHERS)){
                 spotsWithGivenType.add(spot);
